@@ -4,16 +4,22 @@ import styles from "./hogtile.module.css";
 
 function Hogtiles({hogData}) {
     const [selectedHog, setSelectedHog] = useState(null);
+    const [hiddenHogs, setHiddenHogs] = useState([]);
 
     function handleClick(hog) {
         setSelectedHog(hog);
+    }
+    function handleHideButton(hog) {
+        setHiddenHogs([... hiddenHogs, hog]);
     }
 
     return(
         <div className = "ui grid container">
             {hogData.map((hog) => (
-                <div aria-label="hog card" key={hog.name} onClick={() => handleClick(hog)}>
+                <div className = {hiddenHogs.includes(hog.name) ? styles.hiddenHog : styles.visibleHog}
+                aria-label="hog card" key={hog.name} onClick={() => handleClick(hog)}>
                     <h3>Name: {hog.name} </h3>
+                    <button onClick={() => handleHideButton(hog)}>Hide Me</button>
                     <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>Specialty: {hog.specialty}</div>
                     <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>{hog.greased ? "Greased" : "Not greased"}</div>
                     <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>Weight: {hog.weight}</div>
