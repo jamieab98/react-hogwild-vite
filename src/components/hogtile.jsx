@@ -1,7 +1,10 @@
 import React from "react";
 
-function Testing() {
-    return "This is the Test"
+function Hogtiles({hogData}) {
+
+    return(
+         console.log(hogData)
+    )
 }
 
-export default Testing
+export default Hogtiles
