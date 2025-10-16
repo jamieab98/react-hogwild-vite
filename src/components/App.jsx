@@ -8,7 +8,7 @@ import NewPig from "./NewPig";
 function App() {
 	const[greasedBox, setGreasedBox] = useState(false);
 	const[hogNameSearch, setHogSearchName] = useState("");
-	const[newPigData, setNewPigData] = useState({name: "", weight: "", greased: false
+	const[newPigData, setNewPigData] = useState({name: "", weight: "", greased: false, specialty: ""
 	});
 	const[hogList, setHogList] = useState(hogs);
 	const [sortBy, setSortBy] = useState("");
