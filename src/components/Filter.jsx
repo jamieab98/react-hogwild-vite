@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function Filter({onChange, onTextChange}) {
+function Filter({onChange, onTextChange, onSortChange}) {
 
     return(
         <div>
@@ -9,10 +9,14 @@ function Filter({onChange, onTextChange}) {
                 <input type="checkbox" id="greased" onChange={(onChange)}/>
                 Greased Pigs Only?
             </label>
-            <form>
-                Search by Name:
-                <input type="text" placeholder="Search..." onChange={(onTextChange)}></input>
-            </form>
+            <label htmlFor="sort">Search by Name:</label>
+            <input type="text" id="search" placeholder="Search..." onChange={onTextChange} />
+            <label htmlFor="sort">Sort by:</label>
+            <select id="sort" onChange={onSortChange}>
+                <option value="">Select</option>
+                <option value="name">Name</option>
+                <option value="weight">Weight</option>
+            </select>            
         </div>
     )
 }

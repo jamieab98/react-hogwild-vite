@@ -11,6 +11,7 @@ function App() {
 	const[newPigData, setNewPigData] = useState({name: "", weight: "", greased: false
 	});
 	const[hogList, setHogList] = useState(hogs);
+	const [sortBy, setSortBy] = useState("");
 
 	function handleGreaseBox(event) {
 		setGreasedBox(event.target.checked);
@@ -23,13 +24,21 @@ function App() {
 		setHogList(prev => [...prev, newPigData]);
 		setNewPigData({name: "", weight: "", greased: false});
 	}
+	const sortedHogs = [...hogList].sort((a, b) => {
+		if (sortBy === "name") {
+			return a.name.localeCompare(b.name);
+		} else if (sortBy === "weight") {
+			return parseFloat(a.weight) - parseFloat(b.weight);
+		}
+		return 0;
+	});
 
 	return (
 		<div className="App">
 			<Nav />
-			<Filter onChange={handleGreaseBox} onTextChange={handleNameSearch}/>
+			<Filter onChange={handleGreaseBox} onTextChange={handleNameSearch} onSortChange={(e) => setSortBy(e.target.value)}/>
 			<NewPig newPig={handleNewPig} newPigData={newPigData} setNewPigData={setNewPigData}/>
-			<Hogtiles hogData={hogList} greasedBox={greasedBox} hogNameSearch={hogNameSearch}/>
+			<Hogtiles hogData={sortedHogs} greasedBox={greasedBox} hogNameSearch={hogNameSearch}/>
 		</div>
 	);
 }
