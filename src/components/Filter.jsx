@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-function Filter() {
+function Filter({onChange}) {
 
     return(
         <div>
             <label htmlFor="greased">
-                <input type="checkbox" id="greased"/>
+                <input type="checkbox" id="greased" onChange={(onChange)}/>
                 Greased
             </label>
         </div>

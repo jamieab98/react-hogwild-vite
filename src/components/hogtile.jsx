@@ -2,10 +2,9 @@ import React from "react";
 import { useState } from "react";
 import styles from "./hogtile.module.css";
 
-function Hogtiles({hogData}) {
+function Hogtiles({hogData, greasedBox}) {
     const [selectedHog, setSelectedHog] = useState(null);
     const [hiddenHogs, selectHiddenHogs] = useState([]);
-    
 
     function handleClick(hog) {
         setSelectedHog(hog);

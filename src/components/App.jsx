@@ -5,12 +5,18 @@ import hogs from "../porkers_data";
 import Filter from "./Filter";
 
 function App() {
+	const[greasedBox, setGreasedBox] = useState(false);
+
+	function handleGreaseBox(event) {
+		setGreasedBox(event.target.checked);
+		console.log(greasedBox);
+	};
 
 	return (
 		<div className="App">
 			<Nav />
-			<Filter />
-			<Hogtiles hogData = {hogs} />
+			<Filter onChange={handleGreaseBox}/>
+			<Hogtiles hogData={hogs} greasedBox={greasedBox} />
 		</div>
 	);
 }
