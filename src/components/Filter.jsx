@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function Filter({onChange}) {
+function Filter({onChange, onTextChange}) {
 
     return(
         <div>
@@ -9,6 +9,10 @@ function Filter({onChange}) {
                 <input type="checkbox" id="greased" onChange={(onChange)}/>
                 Greased
             </label>
+            <form>
+                Search by Name:
+                <input type="text" placeholder="Search..." onChange={(onTextChange)}></input>
+            </form>
         </div>
     )
 }

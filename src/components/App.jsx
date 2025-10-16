@@ -6,17 +6,20 @@ import Filter from "./Filter";
 
 function App() {
 	const[greasedBox, setGreasedBox] = useState(false);
+	const[hogNameSearch, setHogSearchName] = useState("");
 
 	function handleGreaseBox(event) {
 		setGreasedBox(event.target.checked);
-		console.log(greasedBox);
-	};
+	}
+	function handleNameSearch(event) {
+		setHogSearchName(event.target.value)
+	}
 
 	return (
 		<div className="App">
 			<Nav />
-			<Filter onChange={handleGreaseBox}/>
-			<Hogtiles hogData={hogs} greasedBox={greasedBox} />
+			<Filter onChange={handleGreaseBox} onTextChange={handleNameSearch}/>
+			<Hogtiles hogData={hogs} greasedBox={greasedBox} hogNameSearch={hogNameSearch}/>
 		</div>
 	);
 }
