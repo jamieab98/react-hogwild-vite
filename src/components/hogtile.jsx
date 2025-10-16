@@ -20,7 +20,7 @@ function Hogtiles({hogData, greasedBox, hogNameSearch}) {
         <div className = "ui grid container">
             {filteredHogs.map((hog) => (
                 <div aria-label="hog card" key={hog.name} onClick={() => handleClick(hog)}
-                className = {`ui eight wide column ${hiddenHogs.includes(hog.name) ? styles.hiddenHog : styles.visibleHog}`}>
+                className = {`ui eight wide column card ${hiddenHogs.includes(hog.name) ? styles.hiddenHog : styles.visibleHog}`}>
                     <h3>{hog.name}</h3>
                     <button onClick={() => handleHideButton(hog)}>Hide Me</button>
                     {selectedHog === hog && (
