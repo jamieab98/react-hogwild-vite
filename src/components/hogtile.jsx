@@ -21,13 +21,25 @@ function Hogtiles({hogData, greasedBox, hogNameSearch}) {
             {filteredHogs.map((hog) => (
                 <div aria-label="hog card" key={hog.name} onClick={() => handleClick(hog)}
                 className = {`ui eight wide column ${hiddenHogs.includes(hog.name) ? styles.hiddenHog : styles.visibleHog}`}>
-                    <h3>Name: {hog.name} </h3>
+                    <h3>{hog.name} </h3>
                     <button onClick={() => handleHideButton(hog)}>Hide Me</button>
-                    <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>Specialty: {hog.specialty}</div>
-                    <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>{hog.greased ? "Greased" : "Not greased"}</div>
-                    <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>Weight: {hog.weight}</div>
-                    <div className = {selectedHog===hog ? `${styles.extraInfo}` : `${styles.hiddenInfo}`}>The Highest Medal Achieved: {hog["highest medal achieved"]}</div>
-                    <img src = {hog.image}></img>
+                    {selectedHog === hog && (
+            <>
+              <div className={styles.extraInfo}>
+                <span>Specialty: {hog.specialty}</span>
+              </div>
+              <div className={styles.extraInfo}>
+                <span>{hog.greased ? "Greased" : "Nongreased"}</span>
+              </div>
+              <div className={styles.extraInfo}>
+                <span>Weight: </span> <span>{hog.weight}</span>
+              </div>
+              <div className={styles.extraInfo}>
+                <span>Highest Medal Achieved: </span> <span>{hog["highest medal achieved"]}</span>
+              </div>
+            </>
+          )}
+                    <img src = {hog.image} alt={`Photo of ${hog.name}`}></img>
                 </div>
             ))}
         </div>

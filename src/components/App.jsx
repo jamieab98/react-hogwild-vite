@@ -10,6 +10,7 @@ function App() {
 	const[hogNameSearch, setHogSearchName] = useState("");
 	const[newPigData, setNewPigData] = useState({name: "", weight: "", greased: false
 	});
+	const[hogList, setHogList] = useState(hogs);
 
 	function handleGreaseBox(event) {
 		setGreasedBox(event.target.checked);
@@ -19,15 +20,16 @@ function App() {
 	}
 	function handleNewPig(event){
 		event.preventDefault()
-		console.log(newPigData)
+		setHogList(prev => [...prev, newPigData]);
+		setNewPigData({name: "", weight: "", greased: false});
 	}
 
 	return (
 		<div className="App">
 			<Nav />
 			<Filter onChange={handleGreaseBox} onTextChange={handleNameSearch}/>
-			<NewPig newPig={handleNewPig}/>
-			<Hogtiles hogData={hogs} greasedBox={greasedBox} hogNameSearch={hogNameSearch}/>
+			<NewPig newPig={handleNewPig} newPigData={newPigData} setNewPigData={setNewPigData}/>
+			<Hogtiles hogData={hogList} greasedBox={greasedBox} hogNameSearch={hogNameSearch}/>
 		</div>
 	);
 }

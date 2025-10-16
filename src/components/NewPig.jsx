@@ -1,15 +1,25 @@
 import React from "react";
 
-function NewPig({newPig}) {
+function NewPig({newPig, newPigData, setNewPigData}) {
+    function handleChange(event) {
+        const {name, value,type, checked} = event.target;
+        setNewPigData(prev => ({
+            ...prev, [name]: type === "checkbox" ? checked : value
+        }));
+    }
 
     return(
         <>
-            <form htmlFor = "newPig" onSubmit={newPig}>
-                Add Your Own Piggie
-                <input type="text" id="name" placeholder="Name"></input>
-                <input type="number" id="weight" placeholder="Select Weight"></input>
-                <input type="radio" id="greased"></input>Greased?
-                <input type="submit" id="addSubmit"></input>
+            <form onSubmit={newPig}>
+                <h4>Add Your Own Piggie</h4>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" name="name"placeholder="Name" value={newPigData.name} onChange={handleChange}></input>
+                <label htmlFor="weight">Weight:</label>
+                <input type="number" id="weight" name="weight" value={newPigData.weight} onChange={handleChange}placeholder="Select Weight"></input>
+                <label htmlFor="greased">
+                    <input type="checkbox" id="greased" name="greased" checked={newPigData.greased} onChange={handleChange}></input>Greased?
+                </label>
+                <input type="submit" value="Add Pig"></input>
             </form>
         </>
     );
