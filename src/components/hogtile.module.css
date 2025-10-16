@@ -5,3 +5,11 @@
 .hiddenInfo {
     display: none;
 }
+
+.visibleHog {
+    display: block;
+}
+
+.hiddenHog {
+    visibility: hidden;
+}
