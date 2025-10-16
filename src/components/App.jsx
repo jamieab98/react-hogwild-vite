@@ -8,6 +8,8 @@ import NewPig from "./NewPig";
 function App() {
 	const[greasedBox, setGreasedBox] = useState(false);
 	const[hogNameSearch, setHogSearchName] = useState("");
+	const[newPigData, setNewPigData] = useState({name: "", weight: "", greased: false
+	});
 
 	function handleGreaseBox(event) {
 		setGreasedBox(event.target.checked);
@@ -15,12 +17,16 @@ function App() {
 	function handleNameSearch(event) {
 		setHogSearchName(event.target.value)
 	}
+	function handleNewPig(event){
+		event.preventDefault()
+		console.log(newPigData)
+	}
 
 	return (
 		<div className="App">
 			<Nav />
 			<Filter onChange={handleGreaseBox} onTextChange={handleNameSearch}/>
-			<NewPig />
+			<NewPig newPig={handleNewPig}/>
 			<Hogtiles hogData={hogs} greasedBox={greasedBox} hogNameSearch={hogNameSearch}/>
 		</div>
 	);
