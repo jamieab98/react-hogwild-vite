@@ -14,7 +14,7 @@ function Hogtiles({hogData, greasedBox, hogNameSearch}) {
         selectHiddenHogs([...hiddenHogs, hog.name])
     }
 
-    const filteredHogs = hogData.filter(hog => (greasedBox ? hog.greased : true)).filter(hog => hog.name.toLowerCase().includes(hogNameSearch.toLowerCase()))
+    const filteredHogs = hogData.filter(hog => (greasedBox ? hog.greased : true)).filter(hog => hog.name.toLowerCase().includes(hogNameSearch.toLowerCase())).filter(hog => !hiddenHogs.includes(hog.name));
 
     return(
         <div className = "ui grid container">
