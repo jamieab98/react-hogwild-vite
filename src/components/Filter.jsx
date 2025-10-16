@@ -7,7 +7,7 @@ function Filter({onChange, onTextChange}) {
         <div>
             <label htmlFor="greased">
                 <input type="checkbox" id="greased" onChange={(onChange)}/>
-                Greased
+                Greased Pigs Only?
             </label>
             <form>
                 Search by Name:
